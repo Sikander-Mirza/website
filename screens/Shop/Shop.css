@@ -1,0 +1,33 @@
+/* Shop.css */
+
+.product-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* White background */
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+  }
+  
+  h1 {
+    font-weight: bold; /* Bold title */
+    color: #343a40; /* Darker color for the title */
+  }
+  
+  .search-input {
+    border-radius: 20px; /* Rounded input */
+    border: 1px solid #ced4da; /* Light border for input */
+  }
+  
+  .price {
+    font-weight: bold; /* Bold price */
+  }
+  
+  .no-products {
+    color: #dc3545; /* Red color for no products message */
+    font-size: 1.2rem; /* Larger font size for emphasis */
+  }
+  
