@@ -5,6 +5,7 @@ import FeatureProducts from '../../components/featureproducts/featureProducts';
 import PopularProducts from '../../components/popularproducts/popularproducts';
 import home1 from "../../src/assets/home1.jpeg"
 import home2 from "../../src/assets/home3.jpg"
+import download from "../../src/assets/download.jpg"
 const Home = () => {
   return (
     <Container fluid className="p-5 bg-light">
@@ -43,13 +44,10 @@ const Home = () => {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://via.placeholder.com/600x400"
+                src={download}
                 alt="Third slide"
               />
-              <Carousel.Caption>
-                <h5>Third Slide</h5>
-                <p>Join us today to experience the best services.</p>
-              </Carousel.Caption>
+              
             </Carousel.Item>
           </Carousel>
         </Col>
