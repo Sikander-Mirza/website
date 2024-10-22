@@ -22,7 +22,7 @@ const Home = () => {
 
         {/* Right Side Image Slider */}
         <Col lg={6}>
-          <Carousel>
+          <Carousel indicators={false} controls={true}>
             <Carousel.Item>
               <img
                 className="d-block w-100"

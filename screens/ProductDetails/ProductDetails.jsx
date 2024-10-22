@@ -42,7 +42,7 @@ const ProductDetails = () => {
 
         {/* Product Details Section */}
         <Col lg={6}>
-          <h1 className="mb-3">{product.name}</h1>
+          <h1 className="mb-3">{product.product}</h1>
           <h4 className="text-danger mb-3">${product.priceusd}</h4>
 
           <p className="text-muted">{product.description}</p>
@@ -65,9 +65,9 @@ const ProductDetails = () => {
               <Accordion.Header>Product Specs</Accordion.Header>
               <Accordion.Body>
                 <ul>
-                  <li>Created: {product.created}</li>
-                  <li>Compatible with: {product.compatibility}</li>
-                  <li>File Size: {product.size}</li>
+                  <li>Created: 2024-10-01</li>
+                  <li>Compatible with: Windows, macOS, Linux</li>
+                  <li>File Size: 120 MB</li>
                 </ul>
               </Accordion.Body>
             </Accordion.Item>

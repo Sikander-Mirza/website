@@ -58,21 +58,43 @@ const Cart = () => {
   
     try {
       // Send the order data to your backend
-      const response = await axios.post('https://task-crypto.vercel.app/api/orders', orderData);
+      const orderResponse = await axios.post('https://task-crypto.vercel.app/api/orders', orderData);
   
       // Check for a successful response
-      if (response.status === 201 || response.status === 200) {
+      if (orderResponse.status === 201 || orderResponse.status === 200) {
         swal('Success', 'Order created successfully!', 'success');
+  
+        // Prepare payment data
+        const paymentData = {
+          amount: product.priceusd,  // Use the same product price
+          currency: 'BTC',           // Set currency to Bitcoin (BTC)
+          order_id: orderResponse.data._id, // Get the order ID from the response
+          order_name: product.product,
+          user: userInfo,            // Send user info along with payment
+        };
+  
+        // Send payment request to your backend
+        const paymentResponse = await axios.post('https://task-crypto.vercel.app/create-payment', paymentData);
+  console.log(paymentResponse)
+        // Redirect user to the payment invoice URL if available
+        const invoiceUrl = paymentResponse.data?.result?.invoice_url;
+        if (invoiceUrl) {
+          window.location.href = invoiceUrl;
+        } else {
+          swal('Error', 'Failed to retrieve payment invoice.', 'error');
+        }
+  
       } else {
         swal('Error', 'Failed to create order.', 'error');
       }
     } catch (error) {
-      console.error('Order creation failed:', error.message);
-      swal('Error', 'Failed to create order. Please try again later.', 'error');
+      console.error('Error occurred:', error.message);
+      swal('Error', 'An error occurred. Please try again later.', 'error');
     } finally {
       setLoading(false);
     }
   };
+  
   
   
 
