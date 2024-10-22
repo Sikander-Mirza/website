@@ -2,13 +2,12 @@
 .navbar {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
   }
-  
   .nav-link {
     transition: color 0.3s ease;
   }
   
   .nav-link:hover {
-    color: #df3434; /* Change color on hover */
+    color: #df3434 !important; /* Change color on hover */
     font-weight: bold;
   }
   

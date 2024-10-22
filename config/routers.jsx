@@ -7,6 +7,7 @@ import ProductDetails from "../screens/ProductDetails/ProductDetails";
 import Shop from "../screens/Shop/Shop";
 import Cart from "../screens/Cart/Cart";
 import Contact from "../screens/Contact/Contact";
+import WhatsAppLink from "../components/WhatsappLink/WhatsappLink";
 
 
 const Routers = () => {
@@ -20,6 +21,7 @@ const Routers = () => {
     <Route path="/Cart" element={<Cart/>} />
     <Route path="/Contact" element={<Contact/>} />
 </Routes>
+<WhatsAppLink/>
 <Footer/>
     </BrowserRouter>
   );

@@ -43,47 +43,54 @@ const Cart = () => {
     }
   
     setLoading(true);
-  
-    // Prepare order data to send to your API
-    const orderData = {
-      Product: product.product,         // Product name
-      Price: product.priceusd,          // Product price (assuming in USD)
-      Email: userInfo.email,            // User email
-      Name: userInfo.name,              // User name
-      phone: userInfo.phone,            // User phone
-      Status: "unpaid",                 // Order status (assume unpaid for now)
-      Date: new Date(),                 // Current date as the order date
-      Imageurl: product.imageurl        // Product image URL
-    };
-  
+    console.log("Validation checks passed, preparing payment data..."); // Add this line
+
     try {
-      // Send the order data to your backend
-      const orderResponse = await axios.post('https://task-crypto.vercel.app/api/orders', orderData);
+      // Prepare payment data first
+      // const paymentData = {
+      //   amount: product.priceusd,
+      //   currency: 'BTC',
+      //   order_id: product._id,
+      //   order_name: product.product,
+      // };
+      // console.log(paymentData)
+
+      // // Step 1: Send payment request to your backend first
+      // const paymentResponse = await axios.post(
+      //   'https://task-crypto.vercel.app/create-payment',
+      //   paymentData
+      // );
+      // console.log(paymentResponse);
   
-      // Check for a successful response
+      // // Step 2: Check if payment invoice URL is available
+      // const invoiceUrl = paymentResponse.data?.result?.invoice_url;
+      // if (!invoiceUrl) {
+      //   swal('Error', 'Failed to retrieve payment invoice.', 'error');
+      //   return;
+      // }
+  
+     // Step 3: If payment is initiated successfully, create the order
+      const orderData = {
+        Product: product.product,        // Product name
+        Price: product.priceusd,         // Product price (assuming in USD)
+        Email: userInfo.email,           // User email
+        Name: userInfo.name,             // User name
+        phone: userInfo.phone,           // User phone
+        Status: "unpaid",                // Order status (assume unpaid initially)
+        Date: new Date(),                // Current date as the order date
+        Imageurl: product.imageurl,      // Product image URL
+      };
+  
+      // Step 4: Create the order after payment initialization
+      const orderResponse = await axios.post(
+        'https://task-crypto.vercel.app/api/orders',
+        orderData
+      );
+  
+      // Step 5: Check if order was created successfully
       if (orderResponse.status === 201 || orderResponse.status === 200) {
         swal('Success', 'Order created successfully!', 'success');
-  
-        // Prepare payment data
-        const paymentData = {
-          amount: product.priceusd,  // Use the same product price
-          currency: 'BTC',           // Set currency to Bitcoin (BTC)
-          order_id: orderResponse.data._id, // Get the order ID from the response
-          order_name: product.product,
-          user: userInfo,            // Send user info along with payment
-        };
-  
-        // Send payment request to your backend
-        const paymentResponse = await axios.post('https://task-crypto.vercel.app/create-payment', paymentData);
-  console.log(paymentResponse)
-        // Redirect user to the payment invoice URL if available
-        const invoiceUrl = paymentResponse.data?.result?.invoice_url;
-        if (invoiceUrl) {
-          window.location.href = invoiceUrl;
-        } else {
-          swal('Error', 'Failed to retrieve payment invoice.', 'error');
-        }
-  
+        // Redirect to the payment invoice URL
       } else {
         swal('Error', 'Failed to create order.', 'error');
       }

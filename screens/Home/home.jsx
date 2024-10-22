@@ -3,9 +3,9 @@ import { Carousel, Container, Row, Col } from 'react-bootstrap';
 import NewProducts from '../../components/newproducts/newPrducts';
 import FeatureProducts from '../../components/featureproducts/featureProducts';
 import PopularProducts from '../../components/popularproducts/popularproducts';
-import home1 from "../../src/assets/home1.jpeg"
-import home2 from "../../src/assets/home3.jpg"
-import download from "../../src/assets/download.jpg"
+import home1 from "../../src/assets/white.jpg"
+import home2 from "../../src/assets/home6.jpg"
+import ai from "../../src/assets/ai.png"
 const Home = () => {
   return (
     <Container fluid className="p-5 bg-light">
@@ -44,7 +44,7 @@ const Home = () => {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={download}
+                src={ai}
                 alt="Third slide"
               />
               
