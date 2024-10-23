@@ -5,7 +5,7 @@ import FeatureProducts from '../../components/featureproducts/featureProducts';
 import PopularProducts from '../../components/popularproducts/popularproducts';
 import home1 from "../../src/assets/white.jpg"
 import home2 from "../../src/assets/home6.jpg"
-import ai from "../../src/assets/ai.png"
+import ai from "../../src/assets/home8.jpg"
 const Home = () => {
   return (
     <Container fluid className="p-5 bg-light">
@@ -16,6 +16,7 @@ const Home = () => {
           <p className="lead text-secondary">
             Discover our amazing products and services designed to make your life better.
             We believe in providing the best solutions with top-notch quality and customer satisfaction.
+            
           </p>
           <button className="btn btn-danger mt-3">Get Started</button>
         </Col>
@@ -25,7 +26,7 @@ const Home = () => {
           <Carousel indicators={false} controls={true}>
             <Carousel.Item>
               <img
-                className="d-block w-100"
+                className="d-block w-100 h-75"
                 src={home1}
                 alt="First slide"
               />
@@ -34,7 +35,7 @@ const Home = () => {
 
             <Carousel.Item>
               <img
-                className="d-block w-100"
+                className="d-block w-100 h-75"
                 src={home2}
                 alt="Second slide"
               />
@@ -43,7 +44,7 @@ const Home = () => {
 
             <Carousel.Item>
               <img
-                className="d-block w-100"
+                className="d-block w-100 h-75"
                 src={ai}
                 alt="Third slide"
               />

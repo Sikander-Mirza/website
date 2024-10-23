@@ -47,28 +47,30 @@ const Cart = () => {
 
     try {
       // Prepare payment data first
-      // const paymentData = {
-      //   amount: product.priceusd,
-      //   currency: 'BTC',
-      //   order_id: product._id,
-      //   order_name: product.product,
-      // };
-      // console.log(paymentData)
+      const paymentData = {
+        amount: product.priceusd,
+        currency: 'BTC',
+        order_id: product._id,
+        order_name: product.product,
+      };
+      console.log(paymentData)
 
       // // Step 1: Send payment request to your backend first
-      // const paymentResponse = await axios.post(
-      //   'https://task-crypto.vercel.app/create-payment',
-      //   paymentData
-      // );
-      // console.log(paymentResponse);
+      const paymentResponse = await axios.post(
+        'https://task-crypto.vercel.app/create-payment',
+        paymentData
+      );
+      console.log(paymentResponse);
   
       // // Step 2: Check if payment invoice URL is available
-      // const invoiceUrl = paymentResponse.data?.result?.invoice_url;
-      // if (!invoiceUrl) {
-      //   swal('Error', 'Failed to retrieve payment invoice.', 'error');
-      //   return;
-      // }
-  
+      const invoiceUrl = paymentResponse.data?.result?.invoice_url;
+      if (!invoiceUrl) {
+        swal('Error', 'Failed to retrieve payment invoice.', 'error');
+        return;
+      }
+
+      console.log("Redirecting to payment invoice URL...");
+      window.location.href = invoiceUrl;
      // Step 3: If payment is initiated successfully, create the order
       const orderData = {
         Product: product.product,        // Product name
@@ -102,9 +104,6 @@ const Cart = () => {
     }
   };
   
-  
-  
-
   return (
     <div className="container cart-checkout" style={{ marginTop: '7rem' }}>
       <div className="card p-4 shadow-lg animated-card">
